@@ -78,11 +78,9 @@ set_global_assignment -name SYSTEMVERILOG_FILE substractor_module.sv
 set_global_assignment -name SYSTEMVERILOG_FILE N_substractor_module.sv
 set_global_assignment -name SYSTEMVERILOG_FILE N_and_module.sv
 set_global_assignment -name SYSTEMVERILOG_FILE N_or_module.sv
-set_global_assignment -name VERILOG_FILE alu_module.v
 set_global_assignment -name SYSTEMVERILOG_FILE test_bench.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga_module.sv
 set_global_assignment -name QIP_FILE ram2.qip
-set_location_assignment PIN_AF14 -to clock
 set_location_assignment PIN_B13 -to VGA_B[0]
 set_location_assignment PIN_G13 -to VGA_B[1]
 set_location_assignment PIN_H13 -to VGA_B[2]

@@ -87,6 +87,8 @@ module videoGen(
     assign r = (x < 100) & (y < 100) ? img : 8'hFF;
     assign g = (x < 100) & (y < 100) ? img : 8'h00;
     assign b = (x < 100) & (y < 100) ? img : 8'hFF;
+	 
+	 
 
 endmodule
 

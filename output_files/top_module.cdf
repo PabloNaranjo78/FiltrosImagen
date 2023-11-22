@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Users/ferco/OneDrive - Estudiantes ITCR/8S 2023/Taller de Diseño Digital/FiltrosImagen/output_files/") File("top_module.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/Users/jpabl/OneDrive/Documentos/GitHub/FiltrosImagen/output_files/") File("top_module.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
