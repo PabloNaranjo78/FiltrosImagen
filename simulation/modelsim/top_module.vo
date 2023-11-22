@@ -16,7 +16,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
 
-// DATE "11/21/2023 23:58:54"
+// DATE "11/22/2023 00:43:34"
 
 // 
 // Device: Altera 5CSEMA5F31C6 Package FBGA896
@@ -33,62 +33,107 @@ module top_module (
 	rst,
 	str,
 	q,
-	address);
+	address,
+	VGA_R,
+	VGA_G,
+	VGA_B,
+	VGA_HS,
+	VGA_VS,
+	VGA_BLANK_N,
+	VGA_SYNC_N,
+	VGA_CLK);
 input 	clk;
 input 	rst;
 input 	str;
 output 	[31:0] q;
 output 	[14:0] address;
+output 	[7:0] VGA_R;
+output 	[7:0] VGA_G;
+output 	[7:0] VGA_B;
+output 	VGA_HS;
+output 	VGA_VS;
+output 	VGA_BLANK_N;
+output 	VGA_SYNC_N;
+output 	VGA_CLK;
 
 // Design Ports Information
 // rst	=>  Location: PIN_AE12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // q[0]	=>  Location: PIN_V16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[1]	=>  Location: PIN_AG10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[2]	=>  Location: PIN_AE13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[3]	=>  Location: PIN_AK2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[4]	=>  Location: PIN_AD12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[5]	=>  Location: PIN_AA12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[6]	=>  Location: PIN_AH3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[7]	=>  Location: PIN_AC12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[8]	=>  Location: PIN_AG5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[9]	=>  Location: PIN_AF9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[10]	=>  Location: PIN_AG6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[11]	=>  Location: PIN_AG11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[12]	=>  Location: PIN_AD14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[13]	=>  Location: PIN_AJ2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[14]	=>  Location: PIN_AG2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[15]	=>  Location: PIN_AF5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[16]	=>  Location: PIN_AG7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[17]	=>  Location: PIN_AG1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[18]	=>  Location: PIN_AJ5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[19]	=>  Location: PIN_AJ1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[20]	=>  Location: PIN_AH9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[21]	=>  Location: PIN_AF8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[22]	=>  Location: PIN_AG8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[23]	=>  Location: PIN_AF4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[24]	=>  Location: PIN_AF6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[25]	=>  Location: PIN_AK3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[26]	=>  Location: PIN_AH2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[27]	=>  Location: PIN_AJ6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[28]	=>  Location: PIN_AB12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[29]	=>  Location: PIN_AA13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[30]	=>  Location: PIN_AH5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// q[31]	=>  Location: PIN_AF11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[0]	=>  Location: PIN_AJ4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[1]	=>  Location: PIN_F11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[2]	=>  Location: PIN_F6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[3]	=>  Location: PIN_AA24,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[4]	=>  Location: PIN_AH4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[5]	=>  Location: PIN_AH23,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[6]	=>  Location: PIN_AJ9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[7]	=>  Location: PIN_AB26,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[8]	=>  Location: PIN_C8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[9]	=>  Location: PIN_AA16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[10]	=>  Location: PIN_AD26,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[11]	=>  Location: PIN_W22,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[12]	=>  Location: PIN_AA28,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[13]	=>  Location: PIN_AD27,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// address[14]	=>  Location: PIN_D2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[1]	=>  Location: PIN_AB17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[2]	=>  Location: PIN_V17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[3]	=>  Location: PIN_W16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[4]	=>  Location: PIN_AA16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[5]	=>  Location: PIN_AA15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[6]	=>  Location: PIN_AE16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[7]	=>  Location: PIN_AJ14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[8]	=>  Location: PIN_AE17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[9]	=>  Location: PIN_H15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[10]	=>  Location: PIN_AG15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[11]	=>  Location: PIN_AH12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[12]	=>  Location: PIN_AG18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[13]	=>  Location: PIN_AJ17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[14]	=>  Location: PIN_AG17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[15]	=>  Location: PIN_W17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[16]	=>  Location: PIN_Y16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[17]	=>  Location: PIN_AH19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[18]	=>  Location: PIN_AK16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[19]	=>  Location: PIN_AH20,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[20]	=>  Location: PIN_AH18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[21]	=>  Location: PIN_AG16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[22]	=>  Location: PIN_W15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[23]	=>  Location: PIN_AK14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[24]	=>  Location: PIN_AF16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[25]	=>  Location: PIN_AJ21,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[26]	=>  Location: PIN_AK19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[27]	=>  Location: PIN_AJ16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[28]	=>  Location: PIN_AG21,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[29]	=>  Location: PIN_AJ19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[30]	=>  Location: PIN_AH17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// q[31]	=>  Location: PIN_AF18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[0]	=>  Location: PIN_AJ7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[1]	=>  Location: PIN_AJ12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[2]	=>  Location: PIN_Y26,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[3]	=>  Location: PIN_AF30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[4]	=>  Location: PIN_AH7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[5]	=>  Location: PIN_AD19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[6]	=>  Location: PIN_AJ22,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[7]	=>  Location: PIN_AE23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[8]	=>  Location: PIN_AB21,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[9]	=>  Location: PIN_AH15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[10]	=>  Location: PIN_AK24,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[11]	=>  Location: PIN_AD20,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[12]	=>  Location: PIN_AD17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[13]	=>  Location: PIN_AH22,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// address[14]	=>  Location: PIN_AD11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[0]	=>  Location: PIN_A13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[1]	=>  Location: PIN_C13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[2]	=>  Location: PIN_E13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[3]	=>  Location: PIN_B12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[4]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[5]	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[6]	=>  Location: PIN_E12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_R[7]	=>  Location: PIN_F13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[0]	=>  Location: PIN_J9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[1]	=>  Location: PIN_J10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[2]	=>  Location: PIN_H12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[3]	=>  Location: PIN_G10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[4]	=>  Location: PIN_G11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[5]	=>  Location: PIN_G12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[6]	=>  Location: PIN_F11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_G[7]	=>  Location: PIN_E11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[0]	=>  Location: PIN_B13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[1]	=>  Location: PIN_G13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[2]	=>  Location: PIN_H13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[3]	=>  Location: PIN_F14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[4]	=>  Location: PIN_H14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[5]	=>  Location: PIN_F15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[6]	=>  Location: PIN_G15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_B[7]	=>  Location: PIN_J14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_HS	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_VS	=>  Location: PIN_D11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_BLANK_N	=>  Location: PIN_F10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_SYNC_N	=>  Location: PIN_C10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// VGA_CLK	=>  Location: PIN_A11,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // clk	=>  Location: PIN_AF14,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // str	=>  Location: PIN_AD10,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
@@ -104,6 +149,55 @@ assign unknown = 1'bx;
 tri1 devclrn;
 tri1 devpor;
 tri1 devoe;
+wire \vga_module|v|videoGen|Mult0~23 ;
+wire \vga_module|v|videoGen|Mult0~24 ;
+wire \vga_module|v|videoGen|Mult0~25 ;
+wire \vga_module|v|videoGen|Mult0~26 ;
+wire \vga_module|v|videoGen|Mult0~27 ;
+wire \vga_module|v|videoGen|Mult0~28 ;
+wire \vga_module|v|videoGen|Mult0~29 ;
+wire \vga_module|v|videoGen|Mult0~30 ;
+wire \vga_module|v|videoGen|Mult0~31 ;
+wire \vga_module|v|videoGen|Mult0~32 ;
+wire \vga_module|v|videoGen|Mult0~33 ;
+wire \vga_module|v|videoGen|Mult0~34 ;
+wire \vga_module|v|videoGen|Mult0~35 ;
+wire \vga_module|v|videoGen|Mult0~36 ;
+wire \vga_module|v|videoGen|Mult0~37 ;
+wire \vga_module|v|videoGen|Mult0~38 ;
+wire \vga_module|v|videoGen|Mult0~39 ;
+wire \vga_module|v|videoGen|Mult0~40 ;
+wire \vga_module|v|videoGen|Mult0~41 ;
+wire \vga_module|v|videoGen|Mult0~42 ;
+wire \vga_module|v|videoGen|Mult0~43 ;
+wire \vga_module|v|videoGen|Mult0~44 ;
+wire \vga_module|v|videoGen|Mult0~45 ;
+wire \vga_module|v|videoGen|Mult0~46 ;
+wire \vga_module|v|videoGen|Mult0~47 ;
+wire \vga_module|v|videoGen|Mult0~48 ;
+wire \vga_module|v|videoGen|Mult0~49 ;
+wire \vga_module|v|videoGen|Mult0~50 ;
+wire \vga_module|v|videoGen|Mult0~51 ;
+wire \vga_module|v|videoGen|Mult0~52 ;
+wire \vga_module|v|videoGen|Mult0~53 ;
+wire \vga_module|v|videoGen|Mult0~54 ;
+wire \vga_module|v|videoGen|Mult0~55 ;
+wire \vga_module|v|videoGen|Mult0~56 ;
+wire \vga_module|v|videoGen|Mult0~57 ;
+wire \vga_module|v|videoGen|Mult0~58 ;
+wire \vga_module|v|videoGen|Mult0~59 ;
+wire \vga_module|v|videoGen|Mult0~60 ;
+wire \vga_module|v|videoGen|Mult0~61 ;
+wire \vga_module|v|videoGen|Mult0~62 ;
+wire \vga_module|v|videoGen|Mult0~63 ;
+wire \vga_module|v|videoGen|Mult0~64 ;
+wire \vga_module|v|videoGen|Mult0~65 ;
+wire \vga_module|v|videoGen|Mult0~66 ;
+wire \vga_module|v|videoGen|Mult0~67 ;
+wire \vga_module|v|videoGen|Mult0~68 ;
+wire \vga_module|v|videoGen|Mult0~69 ;
+wire \vga_module|v|videoGen|Mult0~70 ;
+wire \vga_module|v|videoGen|Mult0~71 ;
 wire \rst~input_o ;
 wire \clk~input_o ;
 wire \clk~inputCLKENA0_outclk ;
@@ -141,9 +235,42 @@ wire \mem|altsyncram_component|auto_generated|ram_block1a28 ;
 wire \mem|altsyncram_component|auto_generated|ram_block1a29 ;
 wire \mem|altsyncram_component|auto_generated|ram_block1a30 ;
 wire \mem|altsyncram_component|auto_generated|ram_block1a31 ;
+wire \vga_module|v|videoGen|Mult0~22 ;
+wire \vga_module|v|videoGen|Mult0~21 ;
+wire \vga_module|v|videoGen|Mult0~8_resulta ;
+wire \vga_module|v|videoGen|Mult0~9 ;
+wire \vga_module|v|videoGen|Mult0~10 ;
+wire \vga_module|v|videoGen|Mult0~11 ;
+wire \vga_module|v|videoGen|Mult0~12 ;
+wire \vga_module|v|videoGen|Mult0~13 ;
+wire \vga_module|v|videoGen|Mult0~14 ;
+wire \vga_module|v|videoGen|Mult0~15 ;
+wire \vga_module|v|videoGen|Mult0~16 ;
+wire \vga_module|v|videoGen|Mult0~17 ;
+wire \vga_module|v|videoGen|Mult0~18 ;
+wire \vga_module|v|videoGen|Mult0~19 ;
+wire \vga_module|v|videoGen|Mult0~20 ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6~portadataout ;
+wire \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7~portadataout ;
+wire [2:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w ;
 
 wire [19:0] \mem|altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus ;
 wire [19:0] \mem|altsyncram_component|auto_generated|ram_block1a12_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6_PORTADATAOUT_bus ;
+wire [0:0] \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7_PORTADATAOUT_bus ;
+wire [63:0] \vga_module|v|videoGen|Mult0~8_RESULTA_bus ;
 
 assign \mem|altsyncram_component|auto_generated|ram_block1a0~portadataout  = \mem|altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus [0];
 assign \mem|altsyncram_component|auto_generated|ram_block1a1  = \mem|altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus [1];
@@ -179,6 +306,87 @@ assign \mem|altsyncram_component|auto_generated|ram_block1a29  = \mem|altsyncram
 assign \mem|altsyncram_component|auto_generated|ram_block1a30  = \mem|altsyncram_component|auto_generated|ram_block1a12_PORTADATAOUT_bus [18];
 assign \mem|altsyncram_component|auto_generated|ram_block1a31  = \mem|altsyncram_component|auto_generated|ram_block1a12_PORTADATAOUT_bus [19];
 
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7~portadataout  = \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7_PORTADATAOUT_bus [0];
+
+assign \vga_module|v|videoGen|Mult0~8_resulta  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [0];
+assign \vga_module|v|videoGen|Mult0~9  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [1];
+assign \vga_module|v|videoGen|Mult0~10  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [2];
+assign \vga_module|v|videoGen|Mult0~11  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [3];
+assign \vga_module|v|videoGen|Mult0~12  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [4];
+assign \vga_module|v|videoGen|Mult0~13  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [5];
+assign \vga_module|v|videoGen|Mult0~14  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [6];
+assign \vga_module|v|videoGen|Mult0~15  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [7];
+assign \vga_module|v|videoGen|Mult0~16  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [8];
+assign \vga_module|v|videoGen|Mult0~17  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [9];
+assign \vga_module|v|videoGen|Mult0~18  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [10];
+assign \vga_module|v|videoGen|Mult0~19  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [11];
+assign \vga_module|v|videoGen|Mult0~20  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [12];
+assign \vga_module|v|videoGen|Mult0~21  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [13];
+assign \vga_module|v|videoGen|Mult0~22  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [14];
+assign \vga_module|v|videoGen|Mult0~23  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [15];
+assign \vga_module|v|videoGen|Mult0~24  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [16];
+assign \vga_module|v|videoGen|Mult0~25  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [17];
+assign \vga_module|v|videoGen|Mult0~26  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [18];
+assign \vga_module|v|videoGen|Mult0~27  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [19];
+assign \vga_module|v|videoGen|Mult0~28  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [20];
+assign \vga_module|v|videoGen|Mult0~29  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [21];
+assign \vga_module|v|videoGen|Mult0~30  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [22];
+assign \vga_module|v|videoGen|Mult0~31  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [23];
+assign \vga_module|v|videoGen|Mult0~32  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [24];
+assign \vga_module|v|videoGen|Mult0~33  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [25];
+assign \vga_module|v|videoGen|Mult0~34  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [26];
+assign \vga_module|v|videoGen|Mult0~35  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [27];
+assign \vga_module|v|videoGen|Mult0~36  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [28];
+assign \vga_module|v|videoGen|Mult0~37  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [29];
+assign \vga_module|v|videoGen|Mult0~38  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [30];
+assign \vga_module|v|videoGen|Mult0~39  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [31];
+assign \vga_module|v|videoGen|Mult0~40  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [32];
+assign \vga_module|v|videoGen|Mult0~41  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [33];
+assign \vga_module|v|videoGen|Mult0~42  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [34];
+assign \vga_module|v|videoGen|Mult0~43  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [35];
+assign \vga_module|v|videoGen|Mult0~44  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [36];
+assign \vga_module|v|videoGen|Mult0~45  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [37];
+assign \vga_module|v|videoGen|Mult0~46  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [38];
+assign \vga_module|v|videoGen|Mult0~47  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [39];
+assign \vga_module|v|videoGen|Mult0~48  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [40];
+assign \vga_module|v|videoGen|Mult0~49  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [41];
+assign \vga_module|v|videoGen|Mult0~50  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [42];
+assign \vga_module|v|videoGen|Mult0~51  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [43];
+assign \vga_module|v|videoGen|Mult0~52  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [44];
+assign \vga_module|v|videoGen|Mult0~53  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [45];
+assign \vga_module|v|videoGen|Mult0~54  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [46];
+assign \vga_module|v|videoGen|Mult0~55  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [47];
+assign \vga_module|v|videoGen|Mult0~56  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [48];
+assign \vga_module|v|videoGen|Mult0~57  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [49];
+assign \vga_module|v|videoGen|Mult0~58  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [50];
+assign \vga_module|v|videoGen|Mult0~59  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [51];
+assign \vga_module|v|videoGen|Mult0~60  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [52];
+assign \vga_module|v|videoGen|Mult0~61  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [53];
+assign \vga_module|v|videoGen|Mult0~62  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [54];
+assign \vga_module|v|videoGen|Mult0~63  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [55];
+assign \vga_module|v|videoGen|Mult0~64  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [56];
+assign \vga_module|v|videoGen|Mult0~65  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [57];
+assign \vga_module|v|videoGen|Mult0~66  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [58];
+assign \vga_module|v|videoGen|Mult0~67  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [59];
+assign \vga_module|v|videoGen|Mult0~68  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [60];
+assign \vga_module|v|videoGen|Mult0~69  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [61];
+assign \vga_module|v|videoGen|Mult0~70  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [62];
+assign \vga_module|v|videoGen|Mult0~71  = \vga_module|v|videoGen|Mult0~8_RESULTA_bus [63];
+
 // Location: IOOBUF_X52_Y0_N2
 cyclonev_io_obuf \q[0]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a0~portadataout ),
@@ -195,7 +403,7 @@ defparam \q[0]~output .open_drain_output = "false";
 defparam \q[0]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y0_N76
+// Location: IOOBUF_X56_Y0_N19
 cyclonev_io_obuf \q[1]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a1 ),
 	.oe(vcc),
@@ -211,7 +419,7 @@ defparam \q[1]~output .open_drain_output = "false";
 defparam \q[1]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X22_Y0_N2
+// Location: IOOBUF_X60_Y0_N2
 cyclonev_io_obuf \q[2]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a2 ),
 	.oe(vcc),
@@ -227,7 +435,7 @@ defparam \q[2]~output .open_drain_output = "false";
 defparam \q[2]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X20_Y0_N36
+// Location: IOOBUF_X52_Y0_N19
 cyclonev_io_obuf \q[3]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a3 ),
 	.oe(vcc),
@@ -243,7 +451,7 @@ defparam \q[3]~output .open_drain_output = "false";
 defparam \q[3]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X16_Y0_N19
+// Location: IOOBUF_X56_Y0_N2
 cyclonev_io_obuf \q[4]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a4 ),
 	.oe(vcc),
@@ -259,7 +467,7 @@ defparam \q[4]~output .open_drain_output = "false";
 defparam \q[4]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X12_Y0_N2
+// Location: IOOBUF_X36_Y0_N19
 cyclonev_io_obuf \q[5]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a5 ),
 	.oe(vcc),
@@ -275,7 +483,7 @@ defparam \q[5]~output .open_drain_output = "false";
 defparam \q[5]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X16_Y0_N53
+// Location: IOOBUF_X52_Y0_N36
 cyclonev_io_obuf \q[6]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a6 ),
 	.oe(vcc),
@@ -291,7 +499,7 @@ defparam \q[6]~output .open_drain_output = "false";
 defparam \q[6]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X16_Y0_N2
+// Location: IOOBUF_X40_Y0_N36
 cyclonev_io_obuf \q[7]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a7 ),
 	.oe(vcc),
@@ -307,7 +515,7 @@ defparam \q[7]~output .open_drain_output = "false";
 defparam \q[7]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X14_Y0_N36
+// Location: IOOBUF_X50_Y0_N42
 cyclonev_io_obuf \q[8]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a8 ),
 	.oe(vcc),
@@ -323,7 +531,7 @@ defparam \q[8]~output .open_drain_output = "false";
 defparam \q[8]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X8_Y0_N36
+// Location: IOOBUF_X40_Y81_N2
 cyclonev_io_obuf \q[9]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a9 ),
 	.oe(vcc),
@@ -339,7 +547,7 @@ defparam \q[9]~output .open_drain_output = "false";
 defparam \q[9]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X12_Y0_N53
+// Location: IOOBUF_X38_Y0_N2
 cyclonev_io_obuf \q[10]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a10 ),
 	.oe(vcc),
@@ -355,7 +563,7 @@ defparam \q[10]~output .open_drain_output = "false";
 defparam \q[10]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y0_N59
+// Location: IOOBUF_X38_Y0_N36
 cyclonev_io_obuf \q[11]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a11 ),
 	.oe(vcc),
@@ -371,7 +579,7 @@ defparam \q[11]~output .open_drain_output = "false";
 defparam \q[11]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X24_Y0_N2
+// Location: IOOBUF_X58_Y0_N76
 cyclonev_io_obuf \q[12]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a12~portadataout ),
 	.oe(vcc),
@@ -387,7 +595,7 @@ defparam \q[12]~output .open_drain_output = "false";
 defparam \q[12]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X14_Y0_N19
+// Location: IOOBUF_X58_Y0_N42
 cyclonev_io_obuf \q[13]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a13 ),
 	.oe(vcc),
@@ -403,7 +611,7 @@ defparam \q[13]~output .open_drain_output = "false";
 defparam \q[13]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X16_Y0_N36
+// Location: IOOBUF_X50_Y0_N93
 cyclonev_io_obuf \q[14]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a14 ),
 	.oe(vcc),
@@ -419,7 +627,7 @@ defparam \q[14]~output .open_drain_output = "false";
 defparam \q[14]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X8_Y0_N19
+// Location: IOOBUF_X60_Y0_N19
 cyclonev_io_obuf \q[15]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a15 ),
 	.oe(vcc),
@@ -435,7 +643,7 @@ defparam \q[15]~output .open_drain_output = "false";
 defparam \q[15]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X10_Y0_N93
+// Location: IOOBUF_X40_Y0_N19
 cyclonev_io_obuf \q[16]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a16 ),
 	.oe(vcc),
@@ -451,7 +659,7 @@ defparam \q[16]~output .open_drain_output = "false";
 defparam \q[16]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X10_Y0_N42
+// Location: IOOBUF_X58_Y0_N93
 cyclonev_io_obuf \q[17]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a17 ),
 	.oe(vcc),
@@ -467,7 +675,7 @@ defparam \q[17]~output .open_drain_output = "false";
 defparam \q[17]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X24_Y0_N36
+// Location: IOOBUF_X54_Y0_N53
 cyclonev_io_obuf \q[18]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a18 ),
 	.oe(vcc),
@@ -483,7 +691,7 @@ defparam \q[18]~output .open_drain_output = "false";
 defparam \q[18]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X14_Y0_N2
+// Location: IOOBUF_X54_Y0_N19
 cyclonev_io_obuf \q[19]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a19 ),
 	.oe(vcc),
@@ -499,7 +707,7 @@ defparam \q[19]~output .open_drain_output = "false";
 defparam \q[19]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y0_N93
+// Location: IOOBUF_X56_Y0_N53
 cyclonev_io_obuf \q[20]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a20 ),
 	.oe(vcc),
@@ -515,7 +723,7 @@ defparam \q[20]~output .open_drain_output = "false";
 defparam \q[20]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X10_Y0_N76
+// Location: IOOBUF_X50_Y0_N76
 cyclonev_io_obuf \q[21]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a21 ),
 	.oe(vcc),
@@ -531,7 +739,7 @@ defparam \q[21]~output .open_drain_output = "false";
 defparam \q[21]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X8_Y0_N53
+// Location: IOOBUF_X40_Y0_N2
 cyclonev_io_obuf \q[22]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a22 ),
 	.oe(vcc),
@@ -547,7 +755,7 @@ defparam \q[22]~output .open_drain_output = "false";
 defparam \q[22]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X8_Y0_N2
+// Location: IOOBUF_X40_Y0_N53
 cyclonev_io_obuf \q[23]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a23 ),
 	.oe(vcc),
@@ -563,7 +771,7 @@ defparam \q[23]~output .open_drain_output = "false";
 defparam \q[23]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X12_Y0_N36
+// Location: IOOBUF_X52_Y0_N53
 cyclonev_io_obuf \q[24]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a24 ),
 	.oe(vcc),
@@ -579,7 +787,7 @@ defparam \q[24]~output .open_drain_output = "false";
 defparam \q[24]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X20_Y0_N53
+// Location: IOOBUF_X62_Y0_N53
 cyclonev_io_obuf \q[25]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a25 ),
 	.oe(vcc),
@@ -595,7 +803,7 @@ defparam \q[25]~output .open_drain_output = "false";
 defparam \q[25]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X10_Y0_N59
+// Location: IOOBUF_X60_Y0_N53
 cyclonev_io_obuf \q[26]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a26 ),
 	.oe(vcc),
@@ -611,7 +819,7 @@ defparam \q[26]~output .open_drain_output = "false";
 defparam \q[26]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X26_Y0_N76
+// Location: IOOBUF_X54_Y0_N36
 cyclonev_io_obuf \q[27]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a27 ),
 	.oe(vcc),
@@ -627,7 +835,7 @@ defparam \q[27]~output .open_drain_output = "false";
 defparam \q[27]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X12_Y0_N19
+// Location: IOOBUF_X54_Y0_N2
 cyclonev_io_obuf \q[28]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a28 ),
 	.oe(vcc),
@@ -643,7 +851,7 @@ defparam \q[28]~output .open_drain_output = "false";
 defparam \q[28]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X20_Y0_N2
+// Location: IOOBUF_X60_Y0_N36
 cyclonev_io_obuf \q[29]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a29 ),
 	.oe(vcc),
@@ -659,7 +867,7 @@ defparam \q[29]~output .open_drain_output = "false";
 defparam \q[29]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X14_Y0_N53
+// Location: IOOBUF_X56_Y0_N36
 cyclonev_io_obuf \q[30]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a30 ),
 	.oe(vcc),
@@ -675,7 +883,7 @@ defparam \q[30]~output .open_drain_output = "false";
 defparam \q[30]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y0_N42
+// Location: IOOBUF_X50_Y0_N59
 cyclonev_io_obuf \q[31]~output (
 	.i(\mem|altsyncram_component|auto_generated|ram_block1a31 ),
 	.oe(vcc),
@@ -691,7 +899,7 @@ defparam \q[31]~output .open_drain_output = "false";
 defparam \q[31]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X22_Y0_N36
+// Location: IOOBUF_X26_Y0_N93
 cyclonev_io_obuf \address[0]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -707,7 +915,7 @@ defparam \address[0]~output .open_drain_output = "false";
 defparam \address[0]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y81_N42
+// Location: IOOBUF_X38_Y0_N53
 cyclonev_io_obuf \address[1]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -723,7 +931,7 @@ defparam \address[1]~output .open_drain_output = "false";
 defparam \address[1]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X2_Y81_N93
+// Location: IOOBUF_X89_Y25_N5
 cyclonev_io_obuf \address[2]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -739,7 +947,7 @@ defparam \address[2]~output .open_drain_output = "false";
 defparam \address[2]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y11_N45
+// Location: IOOBUF_X89_Y15_N56
 cyclonev_io_obuf \address[3]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -755,7 +963,7 @@ defparam \address[3]~output .open_drain_output = "false";
 defparam \address[3]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X6_Y0_N53
+// Location: IOOBUF_X32_Y0_N36
 cyclonev_io_obuf \address[4]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -771,7 +979,7 @@ defparam \address[4]~output .open_drain_output = "false";
 defparam \address[4]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X70_Y0_N36
+// Location: IOOBUF_X76_Y0_N19
 cyclonev_io_obuf \address[5]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -787,7 +995,7 @@ defparam \address[5]~output .open_drain_output = "false";
 defparam \address[5]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X30_Y0_N36
+// Location: IOOBUF_X70_Y0_N53
 cyclonev_io_obuf \address[6]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -803,7 +1011,7 @@ defparam \address[6]~output .open_drain_output = "false";
 defparam \address[6]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y9_N56
+// Location: IOOBUF_X78_Y0_N19
 cyclonev_io_obuf \address[7]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -819,7 +1027,7 @@ defparam \address[7]~output .open_drain_output = "false";
 defparam \address[7]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X30_Y81_N36
+// Location: IOOBUF_X88_Y0_N20
 cyclonev_io_obuf \address[8]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -835,7 +1043,7 @@ defparam \address[8]~output .open_drain_output = "false";
 defparam \address[8]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X56_Y0_N2
+// Location: IOOBUF_X38_Y0_N19
 cyclonev_io_obuf \address[9]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -851,7 +1059,7 @@ defparam \address[9]~output .open_drain_output = "false";
 defparam \address[9]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y16_N5
+// Location: IOOBUF_X72_Y0_N53
 cyclonev_io_obuf \address[10]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -867,7 +1075,7 @@ defparam \address[10]~output .open_drain_output = "false";
 defparam \address[10]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y8_N22
+// Location: IOOBUF_X82_Y0_N42
 cyclonev_io_obuf \address[11]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -883,7 +1091,7 @@ defparam \address[11]~output .open_drain_output = "false";
 defparam \address[11]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y21_N56
+// Location: IOOBUF_X64_Y0_N19
 cyclonev_io_obuf \address[12]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -899,7 +1107,7 @@ defparam \address[12]~output .open_drain_output = "false";
 defparam \address[12]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y8_N56
+// Location: IOOBUF_X66_Y0_N93
 cyclonev_io_obuf \address[13]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -915,7 +1123,7 @@ defparam \address[13]~output .open_drain_output = "false";
 defparam \address[13]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X12_Y81_N36
+// Location: IOOBUF_X2_Y0_N42
 cyclonev_io_obuf \address[14]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -929,6 +1137,470 @@ cyclonev_io_obuf \address[14]~output (
 defparam \address[14]~output .bus_hold = "false";
 defparam \address[14]~output .open_drain_output = "false";
 defparam \address[14]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X40_Y81_N53
+cyclonev_io_obuf \VGA_R[0]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[0]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[0]~output .bus_hold = "false";
+defparam \VGA_R[0]~output .open_drain_output = "false";
+defparam \VGA_R[0]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X38_Y81_N2
+cyclonev_io_obuf \VGA_R[1]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[1]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[1]~output .bus_hold = "false";
+defparam \VGA_R[1]~output .open_drain_output = "false";
+defparam \VGA_R[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X26_Y81_N59
+cyclonev_io_obuf \VGA_R[2]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[2]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[2]~output .bus_hold = "false";
+defparam \VGA_R[2]~output .open_drain_output = "false";
+defparam \VGA_R[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X38_Y81_N19
+cyclonev_io_obuf \VGA_R[3]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[3]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[3]~output .bus_hold = "false";
+defparam \VGA_R[3]~output .open_drain_output = "false";
+defparam \VGA_R[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N36
+cyclonev_io_obuf \VGA_R[4]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[4]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[4]~output .bus_hold = "false";
+defparam \VGA_R[4]~output .open_drain_output = "false";
+defparam \VGA_R[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X22_Y81_N19
+cyclonev_io_obuf \VGA_R[5]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[5]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[5]~output .bus_hold = "false";
+defparam \VGA_R[5]~output .open_drain_output = "false";
+defparam \VGA_R[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X22_Y81_N2
+cyclonev_io_obuf \VGA_R[6]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[6]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[6]~output .bus_hold = "false";
+defparam \VGA_R[6]~output .open_drain_output = "false";
+defparam \VGA_R[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X26_Y81_N42
+cyclonev_io_obuf \VGA_R[7]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[7]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[7]~output .bus_hold = "false";
+defparam \VGA_R[7]~output .open_drain_output = "false";
+defparam \VGA_R[7]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X4_Y81_N19
+cyclonev_io_obuf \VGA_G[0]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[0]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[0]~output .bus_hold = "false";
+defparam \VGA_G[0]~output .open_drain_output = "false";
+defparam \VGA_G[0]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X4_Y81_N2
+cyclonev_io_obuf \VGA_G[1]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[1]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[1]~output .bus_hold = "false";
+defparam \VGA_G[1]~output .open_drain_output = "false";
+defparam \VGA_G[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X20_Y81_N19
+cyclonev_io_obuf \VGA_G[2]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[2]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[2]~output .bus_hold = "false";
+defparam \VGA_G[2]~output .open_drain_output = "false";
+defparam \VGA_G[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X6_Y81_N2
+cyclonev_io_obuf \VGA_G[3]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[3]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[3]~output .bus_hold = "false";
+defparam \VGA_G[3]~output .open_drain_output = "false";
+defparam \VGA_G[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X10_Y81_N59
+cyclonev_io_obuf \VGA_G[4]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[4]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[4]~output .bus_hold = "false";
+defparam \VGA_G[4]~output .open_drain_output = "false";
+defparam \VGA_G[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X10_Y81_N42
+cyclonev_io_obuf \VGA_G[5]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[5]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[5]~output .bus_hold = "false";
+defparam \VGA_G[5]~output .open_drain_output = "false";
+defparam \VGA_G[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X18_Y81_N42
+cyclonev_io_obuf \VGA_G[6]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[6]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[6]~output .bus_hold = "false";
+defparam \VGA_G[6]~output .open_drain_output = "false";
+defparam \VGA_G[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X18_Y81_N59
+cyclonev_io_obuf \VGA_G[7]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[7]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[7]~output .bus_hold = "false";
+defparam \VGA_G[7]~output .open_drain_output = "false";
+defparam \VGA_G[7]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X40_Y81_N36
+cyclonev_io_obuf \VGA_B[0]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[0]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[0]~output .bus_hold = "false";
+defparam \VGA_B[0]~output .open_drain_output = "false";
+defparam \VGA_B[0]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X28_Y81_N19
+cyclonev_io_obuf \VGA_B[1]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[1]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[1]~output .bus_hold = "false";
+defparam \VGA_B[1]~output .open_drain_output = "false";
+defparam \VGA_B[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X20_Y81_N2
+cyclonev_io_obuf \VGA_B[2]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[2]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[2]~output .bus_hold = "false";
+defparam \VGA_B[2]~output .open_drain_output = "false";
+defparam \VGA_B[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N19
+cyclonev_io_obuf \VGA_B[3]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[3]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[3]~output .bus_hold = "false";
+defparam \VGA_B[3]~output .open_drain_output = "false";
+defparam \VGA_B[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X28_Y81_N2
+cyclonev_io_obuf \VGA_B[4]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[4]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[4]~output .bus_hold = "false";
+defparam \VGA_B[4]~output .open_drain_output = "false";
+defparam \VGA_B[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N2
+cyclonev_io_obuf \VGA_B[5]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[5]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[5]~output .bus_hold = "false";
+defparam \VGA_B[5]~output .open_drain_output = "false";
+defparam \VGA_B[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X40_Y81_N19
+cyclonev_io_obuf \VGA_B[6]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[6]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[6]~output .bus_hold = "false";
+defparam \VGA_B[6]~output .open_drain_output = "false";
+defparam \VGA_B[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X32_Y81_N19
+cyclonev_io_obuf \VGA_B[7]~output (
+	.i(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7~portadataout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[7]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[7]~output .bus_hold = "false";
+defparam \VGA_B[7]~output .open_drain_output = "false";
+defparam \VGA_B[7]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N53
+cyclonev_io_obuf \VGA_HS~output (
+	.i(vcc),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_HS),
+	.obar());
+// synopsys translate_off
+defparam \VGA_HS~output .bus_hold = "false";
+defparam \VGA_HS~output .open_drain_output = "false";
+defparam \VGA_HS~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y81_N42
+cyclonev_io_obuf \VGA_VS~output (
+	.i(vcc),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_VS),
+	.obar());
+// synopsys translate_off
+defparam \VGA_VS~output .bus_hold = "false";
+defparam \VGA_VS~output .open_drain_output = "false";
+defparam \VGA_VS~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X6_Y81_N19
+cyclonev_io_obuf \VGA_BLANK_N~output (
+	.i(vcc),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_BLANK_N),
+	.obar());
+// synopsys translate_off
+defparam \VGA_BLANK_N~output .bus_hold = "false";
+defparam \VGA_BLANK_N~output .open_drain_output = "false";
+defparam \VGA_BLANK_N~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X28_Y81_N36
+cyclonev_io_obuf \VGA_SYNC_N~output (
+	.i(vcc),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_SYNC_N),
+	.obar());
+// synopsys translate_off
+defparam \VGA_SYNC_N~output .bus_hold = "false";
+defparam \VGA_SYNC_N~output .open_drain_output = "false";
+defparam \VGA_SYNC_N~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X38_Y81_N36
+cyclonev_io_obuf \VGA_CLK~output (
+	.i(gnd),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_CLK),
+	.obar());
+// synopsys translate_off
+defparam \VGA_CLK~output .bus_hold = "false";
+defparam \VGA_CLK~output .open_drain_output = "false";
+defparam \VGA_CLK~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
 // Location: IOIBUF_X32_Y0_N1
@@ -967,7 +1639,7 @@ defparam \str~input .bus_hold = "false";
 defparam \str~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: LABCELL_X13_Y2_N0
+// Location: LABCELL_X42_Y80_N33
 cyclonev_lcell_comb \~GND (
 // Equation(s):
 // \~GND~combout  = GND
@@ -991,7 +1663,7 @@ defparam \~GND .lut_mask = 64'h0000000000000000;
 defparam \~GND .shared_arith = "off";
 // synopsys translate_on
 
-// Location: M10K_X14_Y2_N0
+// Location: M10K_X49_Y2_N0
 cyclonev_ram_block \mem|altsyncram_component|auto_generated|ram_block1a0 (
 	.portawe(vcc),
 	.portare(vcc),
@@ -1026,7 +1698,7 @@ defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .data_interleave_
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .data_interleave_width_in_bits = 1;
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .init_file = "ram_data1.mif";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .init_file_layout = "port_a";
-defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .logical_ram_name = "ram1:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .logical_ram_name = "ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .operation_mode = "single_port";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_address_clear = "none";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_address_width = 1;
@@ -1046,7 +1718,7 @@ defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .ram_block_type =
 defparam \mem|altsyncram_component|auto_generated|ram_block1a0 .mem_init0 = "000B5000B2";
 // synopsys translate_on
 
-// Location: M10K_X14_Y2_N0
+// Location: M10K_X49_Y2_N0
 cyclonev_ram_block \mem|altsyncram_component|auto_generated|ram_block1a12 (
 	.portawe(vcc),
 	.portare(vcc),
@@ -1082,7 +1754,7 @@ defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .data_interleave
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .data_interleave_width_in_bits = 1;
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .init_file = "ram_data1.mif";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .init_file_layout = "port_a";
-defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .logical_ram_name = "ram1:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .logical_ram_name = "ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .operation_mode = "single_port";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .port_a_address_clear = "none";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .port_a_address_width = 1;
@@ -1100,6 +1772,580 @@ defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .port_b_address_
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .port_b_data_width = 20;
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .ram_block_type = "M20K";
 defparam \mem|altsyncram_component|auto_generated|ram_block1a12 .mem_init0 = "0000000000";
+// synopsys translate_on
+
+// Location: DSP_X20_Y79_N0
+cyclonev_mac \vga_module|v|videoGen|Mult0~8 (
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd}),
+	.ay({vcc,vcc,gnd,gnd,vcc,gnd,gnd}),
+	.az(26'b00000000000000000000000000),
+	.bx(18'b000000000000000000),
+	.by(19'b0000000000000000000),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk(3'b000),
+	.aclr(2'b00),
+	.ena(3'b111),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(\vga_module|v|videoGen|Mult0~8_RESULTA_bus ),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|Mult0~8 .accumulate_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .ax_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .ax_width = 9;
+defparam \vga_module|v|videoGen|Mult0~8 .ay_scan_in_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .ay_scan_in_width = 7;
+defparam \vga_module|v|videoGen|Mult0~8 .ay_use_scan_in = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .az_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .bx_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .by_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .by_use_scan_in = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .bz_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_0 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_1 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_2 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_3 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_4 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_5 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_6 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_a_7 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_0 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_1 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_2 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_3 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_4 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_5 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_6 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_b_7 = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .coef_sel_a_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .coef_sel_b_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .delay_scan_out_ay = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .delay_scan_out_by = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .enable_double_accum = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .load_const_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .load_const_value = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .mode_sub_location = 0;
+defparam \vga_module|v|videoGen|Mult0~8 .negate_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .operand_source_max = "input";
+defparam \vga_module|v|videoGen|Mult0~8 .operand_source_may = "input";
+defparam \vga_module|v|videoGen|Mult0~8 .operand_source_mbx = "input";
+defparam \vga_module|v|videoGen|Mult0~8 .operand_source_mby = "input";
+defparam \vga_module|v|videoGen|Mult0~8 .operation_mode = "m9x9";
+defparam \vga_module|v|videoGen|Mult0~8 .output_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .preadder_subtract_a = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .preadder_subtract_b = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .result_a_width = 64;
+defparam \vga_module|v|videoGen|Mult0~8 .signed_max = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .signed_may = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .signed_mbx = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .signed_mby = "false";
+defparam \vga_module|v|videoGen|Mult0~8 .sub_clock = "none";
+defparam \vga_module|v|videoGen|Mult0~8 .use_chainadder = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X19_Y79_N30
+cyclonev_lcell_comb \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w[2] (
+// Equation(s):
+// \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2] = ( !\vga_module|v|videoGen|Mult0~21  & ( !\vga_module|v|videoGen|Mult0~22  ) )
+
+	.dataa(gnd),
+	.datab(!\vga_module|v|videoGen|Mult0~22 ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\vga_module|v|videoGen|Mult0~21 ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w[2] .extended_lut = "off";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w[2] .lut_mask = 64'hCCCCCCCC00000000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w[2] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: M10K_X14_Y78_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_first_bit_number = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .mem_init3 = "8BEADB3F836C339B4E6B7A0A5685B61EFF887AD144F94DDF1FB5657C3D1AE6366C8557B00B0C4674E9B42B757857FB9EE3B21CC4F5D9E524BB7CC19EC77D5DEA600660CF300F799F91608CDE7FCC8446E3D0A3C2957F19CC7476EF06E3BFB258C769935B9AB271431752BDA90EEC2DF3E7312D22746AF66D247F712601E23E7DA4D5CF0074FE7303AC544662CE388426E79EE7F14528E0C5705AE26FFE7F6FF06E5D2FF5F50BE8210F3F061C3FF5F112D05E9B1B5EC1F0031804CD7BA748C63034E0E78EFF19E1C90F9E2AD7933C98E0334F271507C6CC1AFF8500C0EAFCFFDBB01BF9B43DEF0C084B5E37CBEDC6332EEE243C19BBF418BEA9B4E9DF0DCF00F0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .mem_init2 = "18444FFC4A284CAFB6D32278C7C6BEE027ACEB5B69F5D46F01B2EDC0E1D461D9A7D39753A7580947FC63C2284AC9A6F96A5E4885A678BAD6F92B8FC9D92530A9CAB32E52B3C65422EB7D83E5A63674506F1584D823C35A9F55208390A74B1E92B83FA635789F777310D659963E2E3C73CB7A13C22668FA7CA96460EEF76B2D149A8AD1EA21E8448F9A41C87E04DBE650250FC3B2FA26130988B2959FEE97E872B0D8955F656CB2B42068A916D3ED2010EAB52D1601839CDF55E25314460A0948546E28B51ED9F8EE230941B9D254686980B2D338EB7BBA9DD50279906111FB774747D46370685FA14C0AD123ECF51303A5F8B4154C21AE99813CACC75CB5E701";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .mem_init1 = "2C2B9D166D59C744799EB6BED5000B384AE8FCE8490C78B4CAECB5A6F40F46F3D5DE057D9DDC8E59BE0D74826621C8E3FAF2FA4E6E5DFE47FFA016559188DE7B84160F2756C92F9A7DE893DFBDE4E3DB7C8C25206741D8E04A01464B262ACD82E7CDAFA1B9EFA30A172B1EEF9812CF7784608EB2F3BF2BD1864E0C7E82858641DBDBC273998435FC216D8A60A2317F76F24CC4B19DFD670E08EAF0439C68CB38B6FFDD0A717022FD03A288466843201B72333EA73B4A753053CCF8F79B6A0CBE6FA9A94D9B724A1EA1617C67599B12C3578C6516C658FE4DA5039B84ECF87AFA8825265633FABCBD83759F6A1CA918D36230736A74D7C1BC888A2A28CEB4A572";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a0 .mem_init0 = "A0E9CFE96FB4521B290FF5BEC3B6B2429F44165BC01FE61D07DB687E57925DA37904C039C8A7D16A179F46B59576FAFBD7B8A5BE70449044282B195C5EF8511D764F9935E49B41AE2D6A9FB11B7D357A509E75E937988D9A9FC6A5DB9689DFA367443C770B2F2E6387AE5DFB3DC3A105939D17398BE9D4C3865D06E8F3CF409AEBA2504F9A12758876207EBF5CC8B2C445A3EA140EE283A88A73A88D5E999D113594DE09BC1940E874CBCCD35F685563A3E1C5DC80AD6C7DFE73D4486E7FA8D6688BD4183E03EFB5F204639A962D2D6E7CDC24044A730B2391CE3DD3C98C9E6FF241D02EF8EC222986BAC70DF560CB66AF2846350C95900C334467372A32443A";
+// synopsys translate_on
+
+// Location: M10K_X38_Y78_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_first_bit_number = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .mem_init3 = "B11DF3B4DCE97BFDCBFD13019D11F44C8D2924EB8E16EB88A7B5D82441C486479CC808383712DC6DA009ABEE06E551D0F4CBB5C6442DF178572FCD9F62160E731068DE5EEB430B2694401412714EAB0F433CEFB2AB710E99DBE732EFF4A2DC75DC90152F418F6B2FF3D2B3C508908D1874647098C402812E015375048210D2E0842FAF007ACE0F05225E95F5A3711BC7E060F8FE6A4B27194B50EECFF1F0F00F80B3E1006AE4206B00C0FFFCFFD8E53D962F0EBA00FE090C18006670CA3C1E081D00E0D2FF1EFE688C843798D5BC77E470CFCB9FE2BB746FC49D0000FBFCFF9E9691B4937FB0000CCE800E750D3E2F59EDFD0307839718AA6AB50E7F71BF3FF0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .mem_init2 = "0B117FF17B02859509DBE9F8008EAFFF07DCC790DB625C5F0077B70F09F1F3EBAABBF598349FE067FF3BC409953A0E62036C867C11F9FC0ADFC59B436CECCFB09F906C06730BC9D6D3BD3CFD5CA802D01E08822059D8D514E0A7835188059E09C7F3C880E4CDED018B3CC22460F08C376240F6145825B9E721485EC1085A9CF1E5390C05F03731F848E44540E9256AC0FB8AF4038A5B2EB312CF99AF6A27B8D76A4671009F8F6B131F9294E88A66667C0C9DE954667C23C00C6E5E889D4901793EA623BCEB50932DCBAED5DB124C6B66AF74DF00969A7C89F12A005EFF42C62B5EEF327D330044A923631946D61DC9B4D25C3C960BEA5FE27301602269621006";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .mem_init1 = "0571410F18B8C6570B19739AE60936DE8B3DF6E07936BA94E3F0A26F97A888BDF57E179EB11CCC1086079A1AB54EA960072CFCEF61835DC2E689E966BEBD1F81F58620E290ABAFE7A09563E0FB3EE191D71B6B80054EC4FF842219AD7690B09C2AC1EE2E7D85F20E1CEE30DDD70C11B37208A0ECDF8D9835217521400EF3C09A1FC7DACFD23C141DC225DD8AC3FF02BDFC8E4DED71A9EDDB6F76F02C400FAA38047BD5AAB7FF3D83703CF24BD2A5971A4C6098D4788CB9CF937EAADE65DFF9B55F8DC31E4350A370916D40C7D338A39ABDBD595BFDA19B74230ED2FF3263549874BDED8D3A9974DC560FD564A17FEB53D45E1D73CE23D02B3CD7EBB26061EE6E";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a1 .mem_init0 = "3F5615B9C2394B763CF3EDD82C2007246587E3B7EB932C2538FDE3C16FBC9CEF5DB792D5A1F418B175807B0881904639F0747E073D373568C84CE23CBEFBC15C9035CB8DF89C7E3137E9BF38C8FEAFCB6F1F8601C5B8A62B5D48A683E0F1E0C37866C375B4FA16B4CC799E0C3E32749B232322935CCAC8FC38637353821B1226D88BDD8FE3E389DCCCCA1D2C518F1C98C63C0CA9DB13B4A1C91B180260E1E1F2092C6473155A0BEBF70C0F1F606E1697EBAA025E96318071FF8A7BF45BA533347A43181F3FFCA7863BF9BCFD4435318F8FE3C7E9710843C524706E1CF1FE80F00A528734B50CC2C1F73DEF0E043335776C8D74590F19F2FC688748150946AD85";
+// synopsys translate_on
+
+// Location: M10K_X26_Y79_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_first_bit_number = 2;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .mem_init3 = "1BBF1C48EEFE42119A57A61931C28013898AFFC543497132C2C220057B84D17C89E26AD9A9BE642C72B8579F074213A7946EF854C47154DF4452571E10A2792848894873B3AF419F75843F4C718B0F40D25028378BBDBEDA77E058FE107A08D89401FEDA84F2E90728BB042D80394D68D8D9D8456F40E4866A11C35881A1A2F3B83810FF8731F0FF4167EC8D9ECD67F81FFFFFFF1E6F5C7B9D8387100000000008EF838CB6642614FFFFFFFCFF60615AC864AE643F000600180DC622D25EB625FBFF1F5EFF1F8CCFBD06A9AB4343F01C0FCFF4F77107FEAE6EDDFFFF04030014E36676ED6C30000CCE0004C6ACA2DA86578B00007C08E760BA8E8327CAED0FF0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .mem_init2 = "0B088002BB238E437FD2B707FF85DFFF61C8356D34831B00FFF467000001F01D5C9FF466C7E02E67FFB356F0CB534E8B8C70FAB3FFFAFD259025125ADD1C0007418FDF1708BC315729DDC98DE0E00C80130C2B00197A4BF8AA1E7C46253651D2F025A4BBA60AE30B603AA36DBF0CD08520A2E2184FF6AD9F782D562C4B3FAEE44DDBEEE77B3B656DDE8C5AF3E426D2105ADCA8C6C5856ADDECF47489903867AC152D916E760F89C3D0037C02F478367DE22DEF8070003FC0AD8B89FF2E36FE9381903C4C00579161F29809EC07DC0A60600900969F58F0D1FA0CF60E00C43EC95B709181B3C9ECB3E0B997AEE106474244ED8C6857E3C18B26391E9F24481FC5";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .mem_init1 = "19FFC1910F5579730CE22143F809FE11FE1D40B104D8C5285C00BFE008D082F2D481E713B6E30FEF860413B1E73F1669808F00F09FFF1DC173CFBD87D084E0090BF9E9F388C82FFBCAD86C0090191F2EA3EA5880469F16000111801D89ACDF90333BE870012C1A0EF411CCEC5FED216B012DFF3F3F8C07F63B88C96BDEADBEE3E03FC23FE37C091603A81BECFC00FE33FF0033C7C0EAA9E7B0010FE03FF0CBC741BE923B05FBC07F0030FC6C3CEB0F1B80BFC2F3F80FC1FD13EF33AFF713FB78CB81F310136D33A69E61809B97383CF4DE3EDE9C47C51D5CB4F3C3093C066E73FC8956356648231C740146713E99FE7C48FC73FC39CFE5C02F1B3D288D9A5761";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a2 .mem_init0 = "C070E63954C1E4C8AA4435BA1FC47BB7F4880F6086287B2717FEB88580F71CD215D51544FF77ED8B598863FB236DBC0D29F34020F1A7B08FF78FFC069AF83E411BF97359FF607FC061A87FC0125FC87B80E007FE076C9DC39E6D4703FF0E00FC809640D6C72CDF38B7F0E00FC002EC653C134C626B773F003F800E3753EE0B3EED7323F003FC06046DFC81C84ED02F4F383FF040A00C3806711E02057F01FE0C0197D7FDF99013C3D7F00FE0806CC8F033CC4060D93E007E00027A7D33C638087C83E01FC000277A16FE3F0038393E0FF00007EE50D87C08C3804FE0FE0080FFF24BB838CE0CFCFE07C00F0FFBB17C87BE7187EEF01E0CFC47F858F6F21AC9DE";
+// synopsys translate_on
+
+// Location: M10K_X38_Y79_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_first_bit_number = 3;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .mem_init3 = "A3EEC281D1265998D9409483DE7B34084385A8B503369ADE404185CB93E5E7AB7FB833A7C885E6046C9DAF127479F7A59D6C02DE0EFCF328DEC07276001E0D2F3378E8CD9FF401EA1504895ADE36282EBBCBD648460788E8AA87F16CCFDFFFAB6F054CBF1763707D79ADFFEDEAE776247CB7A00CEB3CC0022010BAB62A5C69D164800000000000000A5B928A82C30000000000009AF8B12FFA03A06FFFFFFFFFF766A45A58F57DF3FFFFFFFCFFFC5C0C401C9CFFFFFFFFFFE7FA3330E7A13AB2FFFFFFDEFF1FC2E857095227C4FFF003FFCFFF7EEEDA52DA1AE200000000004D5EE5AB83F990000CCE000446C96555A8CE630000000000002429AB27C7DC7FF0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .mem_init2 = "0B0000000ACD7CC1002C01FFFF87FFFF67F0AA52E01FBD00000818FFFFFEC4F69CDE1B4307FFEF9800442FEB115C7BCF107F044FFFFBEFFEB4891C42EAFC002DC07F9A0A10FFF1940881167AE82005C8316CCC007E4C96F95EF3FFE4ED25D01CFC04FF187F0EC0FEBB9A2C49C0E92C8734EFD41FB7F88B95B24BC91E7E519239703FE4A95696A93EA8E73C9FE3D91C9059E0C8AEBABEED7F3F0C2CA9803FE0498C259111BC0F8F9D1003FC00B209567DF652100900003FC00EA3ECFFFE1400030A803FFC006C0591F3885E0007EC0B9FE00255B66027FF1E0371F011FFC002A577805941CC0E1C421FC790C82FB87D0C38F14300601C3F926DAB012BBC7883B9";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .mem_init1 = "FE003EFE3F8B80824A03C2B9FFF601EFFDF90B31FCC0FE5EBFFF401FFFFF771D340007E02BFFF00079FBEC7ECDB00069BA6FFF000000A23F920F3E07FE10FFF600001A0C6737DFFC0ECE6FFF600000C019D6877F878027FFFE0000090043206FC3FD8A0FFECC020ED4002B0C200C416DFF31803FFF8C00083800087C11613703FFFFC20003FC01E703D41370FFFFFE30000FFFF87EEC6E003FFFFFE00000F40087D1EFC40607FFFF0030FF8FFF120FE400C0430FF80FFE01EC0FC370071C07203781FCE01C81C3CF6061FF0A10783F0F1FC060E0D80413A3B801C3F0C0047F1C0D71C1FBBE87AFE388016781C0E6019FA0827B00000FF9F0301FC6030CFED560";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a3 .mem_init0 = "0070F8C647011FE7BF27ECD60007FC3804F009FF7E09B804F000C70600F81C83CD3305527F080E73618F83F93F68E6251FF0803FB1C7CE0FFFF0000616F80041E3FE7CE1FFFF8000186800001C600F8400FFF800071483FC1F8E07FC000FFF000009C037F830E03F7800FFF000021C033FFD8FFC77800FFFC00001F033F1EC3EF1FC00FFFC000003D3FF01F040E0303FFFC0000085FFC03F80E3FCFC7FFE000001A83801FE17E3F3C7FFF000006DC00FC3F03F80E03FFF800002798CFC07C7FF80F3FFE0000027FEF1003FFFFFC13FF0000007EFB037800FFFFF8FFF000080FFFDB97FC0FFF300FFF8000F0FFFCF23F83FFE07FFFFE000FC7FFFBA0803E6F1E0";
+// synopsys translate_on
+
+// Location: M10K_X14_Y80_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_first_bit_number = 4;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .mem_init3 = "649872E0C081DCEAA4E0B6052315B995C7C04FEC0CF9EB30E0120EB3766A200A81BC62C00812BD116B49B3E1757FD2A60D2BA5930FB5F7D13E68401C00018D1CC8FC1306980401EFEAC073DFFE5747C7D42000001906317D74DAE756FBFFFFFBFEFE8C604F920564549FFFEDEAF07BFFADF656F890FF3FFDDFEFFD09A3BECB3ACBFFFFFFFFFFFFFED4E3631EEF3EFFFFFFFFFFFFE4417096957C3FA000000000001A4A0535A6CBF200000003000320F2B3F47EFFFFFFFFFFFFFF652F0B0298CC0000002100E02077F9086B67D7FFF000003001230EE0010618FFFFFFFFFFFFF3C01EA900E970000CCE0004464FF078103EBF00000000000024C17ED83FF4FFF0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .mem_init2 = "0B0000000A4B772EFFFEEFFFFF87FFFF67F4DC32BFFFEAFFFFFFFFFFFFFF3EDBA11E1C7C07FFEFFFFFFFF303847F838FFF80073FFFFB1E002C0AE04A5803FFED3FFFF0E7F4800E140481000327DFF8C7AE840FFF80BBDE001E00000406DB1FE0FFFB6D7860F13FFFFE25BC71FFEFFCC4996FF7E0001377C63C7F1FBC87EF820180E10B5F9B24BA34F5E702F81FF1F4EFA7FF0EAA4210103F80040A067FC01FFB73526EFDBFF070F9EFFC03FF753689823E40001F4FFFC03FF2858E0003F40002F07FC003FFBF721E0C57E0001883F4001FFE7065FFFD07E0028C0FE0003FEDF9BFFFFFFE0010C3FC00006EF6A4807FF7FF000CFF8000006D9B9700243C78C2CE";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .mem_init1 = "00000000C072FFFF97FC023C0000000000030C4E27E0FFE00000000000000D17F40007FFBC00000000000000163FFF9650000000000000001DF03FF80FE0000000000000000000000EC3F000000000400000000007FFF900000000050000000003FE77C0000C020ED400000C000C7E9100C1803FFF8C000038000980101E3003FFFFC20003FC01F80303E300FFFFFE30000FFFFF80E010003FFFFFE00000FFFFF81F000007FFFFFF0030FFF00003F00000FFC3FFF80FFFFE000FFC00071FFF3FFF81FFFFE001FC000061FFFBEFF83FFFE0007F0020041FFFBFFFC3FFFFF87FE00201C1FF3EFFDFFFFFFE87FE0000001FE0FE7CFFFFF001FFC010001C0CFEC99F";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a4 .mem_init0 = "FF8F00FFB801C0004007E2E1FFF8003FFB00040001F638D40FFF0007FF001C43C240F92400FFF0037E7003F6C0F097C0000FFFC031F8000F0000000D5107FFBE03FF8001F00000000017FFFFE07FF0000000000007037FFFE00FF8000000000000003FF7FFC0FFC000000000000203FF3FFE0FFF800000000000000FF3FFF03EFE000000000000003FFFFE0040FFC0000000000083FFFFC00003FF0380000000019FFFFE001003FC38000000006C3FFFFC000000FFC0000000027803FFF8000000FC0000000027FE0FFFC0000001C000000007EFF00FFFF000000000000080FFFFF8FFFF0000000000000F0FFFFF1FFFC00007F0000000FC7FFFF9FFFC0101FF";
+// synopsys translate_on
+
+// Location: M10K_X14_Y79_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_first_bit_number = 5;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .mem_init3 = "027DC4A0C08040088060B60EFF2FF525C7E00F1FCFFFFB30FFF5D7BA6FEFDFF07E4D9C3FF87BDA76301583008A802D5862EBFF2DB70E0891FE43B01FFFF20E7285B0043F67FBFE10000003CB0CF38000000000000000427E3664B98A87FFFFFBFF0F3347C32AE7ABA7600012151F08048E3A7EF30000000000000001F322BB0730000000000000007AEC05E2700000000000000007A81120EE001FC0000000000065E00983C0000C000000000007201043F80100000000000000192C1103013FFFFFFFFFFFFFF71EE087801BE8000FFFFFFFFE7A490C00015D0000000000000094C050001D8FFFF331FFFBB93BCC000001D0FFFFFFFFFFFFD3A4EC00000B000F";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .mem_init2 = "F4FFFFFFF53FFDF00001F000007800009803941EC0001A000000000000000FB4E1E1E22FF8001000000000C3077FFC5D000007FFFFFBFF4F5FF7FFBAF800001200000104F31FFFEBFF7EFFFDFFFFFCC77EDD0FFFFFE721FFE1FFFFFBF3F74000FFFFF307BFFFFFFFFF7FDF81FFEFFAFB896FF7FFFFE0FF183F8F1FCCFFDF8201FF5E7FFFE3C7383A4C18FCFBFFF3E7FFFFFFF045690FFFDFBFFBEF3FFFFFFFFD5A860001BC0001E2FFFFFFFFFE5440003E40001EBFFFFFFFFE52A40003F40003EFFFFFFFFFE7DB00001FC0001EFFFFFFFFFFFA480001FC0003E7FFFFFFFFF7F800001FC0001EFFFFFFFFFF7F687F81FC0001E7FFFFFFFFF7FAA0FFCF83871CFF";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .mem_init1 = "FFFFFFFF7FFF0000000003C7FFFFFFFFF7FFC8001800FFFCFFFFFFFFFF7FFE47F40007FFC7FFFFFFFFF7FFFFA7C000001DFFFFFFFFFF7FFFEFFFC000025FFFFFFFFFF7FFFFFFFFFFF13C0FFFFFFFFF3FFFFFFFFFF80000FFFFFFFFF2FFFFFFFFFC00000FFFF3FDF12BFFFFF3FFF38001FFFE7FC00073FFFFC7FFF6001FFFCFFC00003DFFFC03FE0003FFFCFF000001CFFFF0000000EFFFFFC000001FFFFF0000001FFFFFF8000000FFCF00000003FFFFFF003C0007F00000000FFFFFF8E000C0007E00000001FFFFFF9E00040007C00000007FFFFFFBE00040003C0000007FFFFFFE3E00C1000000000007FFFFFFFFE01F018000000001FFFFEFFFFFF3013E00";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a5 .mem_init0 = "000000FFFFFE3FFFFFF81F000000003FFFFFF3FFFFFFC7E400000007FFFFE33C3F8FFEF8000000037FFFFC00000089FE0000000031FFFFF0000000039000000003FFFFFE0000000000000000007FFFFFFF00000007000000000FFFFFFFF00000000000080000FFFFFFFF000000020000C0000FFFFFFFF000000000000C00003EFFFFFF00000000000000000040FFFFF000000000800000000003FFFF0000000001800000001003FFF0000000006C000000000000FF000000000278000000000000F00000000027FE0000000000010000000007EFF000000000000000000080FFFFF800000000000000000F0FFFFF0000000007F0000000FC7FFFF800000001FF";
+// synopsys translate_on
+
+// Location: M10K_X38_Y80_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_first_bit_number = 6;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .mem_init3 = "0205F820C08040088060B60FFF00ABC5C7E00FFFCFFFFB30FFF431BC3FEFFFFFFFF3FFFFF80381CF43E27CFFFFFFFFFFFF1400407400006E01BC0FE0000DF2853B800000000000000000EC18539C00000000000000000C80063940010000000400000087E04D0410204000000010000C8E02830000000000000000007D21111800000000000000000710180B0000000000000000007700C7C00000000000000000001E0600000000000000000000CFE03C0000000000000000000F2800FC001000000000000000DE00000001000000000000000FC4000000B000000000000000EC40000003000000000000000BC58000003000000000000000BC500000030000";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .mem_init2 = "00000000000BF60000003000000000000000DCA1000007000000000000000E4B1E0001F000000000000000C0F8800035FFFFF8000004003E0800000557FFFFFFFFFFFFF3F820000005000003F00002C80FB1F000007000000000000000FCBFFF000000FFC0000000000FDFFE00100700799008000007FFE03FF0E073003F8201FF803FFFFC07C7C73FFFFF07FFF203FFFFFFFF7FB73FFFE07FFFF07FFFFFFFFFDDF9FFFE43FFFE07FFFFFFFFE66C7FFFC1BFFFE07FFFFFFFFFD35BFFFC0BFFFC07FFFFFFFFFEDEBFFFE03FFFE07FFFFFFFFFFA7FFFFE03FFFC0FFFFFFFFFFFD9FFFFE03FFFE0FFFFFFFFFFFF6FFFFE03FFFE07FFFFFFFFFFFFBFFFF07FFFE07F";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .mem_init1 = "FFFFFFFFFFEFFFFFFFFFFC0FFFFFFFFFFFFF8FFFFFFF0001FFFFFFFFFFFFFF980BFFF8001FFFFFFFFFFFFFFC07FFFFFFE1FFFFFFFFFFFFFFFFFFFFFFFC3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFCFFFFFFFFFFFFFFFFFFFFFFFF1FFFFFFFFFFFFFFFFFFFFFFFE0FFFFFFFFFFFFFFFFFFFFFFFC0FFFFFFFFFFFFFFFFFFFFFF000FFFFFFFFFFFFFFFFFFFFFE000FFFFFFFFFFFFFFFFFFFFF8000FFFFFFFFFFFFFFFFFFFF80000FFFFFFFFFFFFFFFFFFFF80000FFFFFFFFFFFFFFFFFFFE00000FFFFFFFFFFFFF";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a6 .mem_init0 = "FFFFFF000000FFFFFFFFFFFFFFFFFFC000000FFFFFFFFFFBFFFFFFF8000000FFFFFFFFFFFFFFFFFC8000000FFFFF7FFFFFFFFFFFCE000000FFFFFFFFEFFFFFFFFC0000000FFFFFFFFFFFFFFFFF80000000FFFFFFF8FFFFFFFFF00000000FFFFFFFFFFFFFFFFF00000000FFFFFFFDFFFFFFFFF00000000FFFFFFFFFFFFFFFFFC1000000FFFFFFFFFFFFFFFFFFBF00000FFFFFFFFF7FFFFFFFFFFC0000FFFFFFFFFE7FFFFFFFEFFC000FFFFFFFFF93FFFFFFFFFFFF00FFFFFFFFFD87FFFFFFFFFFFF0FFFFFFFFFD801FFFFFFFFFFFEFFFFFFFFF8100FFFFFFFFFFFFFFFFFFF7F000007FFFFFFFFFFFFFFFFF0F00000FFFFFFFFF80FFFFFFF03800007FFFFFFFE00";
+// synopsys translate_on
+
+// Location: M10K_X26_Y80_N0
+cyclonev_ram_block \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 (
+	.portawe(gnd),
+	.portare(vcc),
+	.portaaddrstall(gnd),
+	.portbwe(gnd),
+	.portbre(vcc),
+	.portbaddrstall(gnd),
+	.clk0(gnd),
+	.clk1(gnd),
+	.ena0(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|rden_decode|w_anode666w [2]),
+	.ena1(vcc),
+	.ena2(vcc),
+	.ena3(vcc),
+	.clr0(gnd),
+	.clr1(gnd),
+	.nerror(vcc),
+	.portadatain({\~GND~combout }),
+	.portaaddr({\vga_module|v|videoGen|Mult0~20 ,\vga_module|v|videoGen|Mult0~19 ,\vga_module|v|videoGen|Mult0~18 ,\vga_module|v|videoGen|Mult0~17 ,\vga_module|v|videoGen|Mult0~16 ,\vga_module|v|videoGen|Mult0~15 ,\vga_module|v|videoGen|Mult0~14 ,\vga_module|v|videoGen|Mult0~13 ,
+\vga_module|v|videoGen|Mult0~12 ,\vga_module|v|videoGen|Mult0~11 ,\vga_module|v|videoGen|Mult0~10 ,\vga_module|v|videoGen|Mult0~9 ,\vga_module|v|videoGen|Mult0~8_resulta }),
+	.portabyteenamasks(1'b1),
+	.portbdatain(1'b0),
+	.portbaddr(13'b0000000000000),
+	.portbbyteenamasks(1'b1),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.portadataout(\vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7_PORTADATAOUT_bus ),
+	.portbdataout(),
+	.eccstatus(),
+	.dftout());
+// synopsys translate_off
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .clk0_core_clock_enable = "ena0";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .data_interleave_offset_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .data_interleave_width_in_bits = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .init_file = "ram_data1.mif";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .init_file_layout = "port_a";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .logical_ram_name = "vga_module:vga_module|vga:v|videoGen:videoGen|ram2:mem|altsyncram:altsyncram_component|altsyncram_fqo1:auto_generated|ALTSYNCRAM";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .operation_mode = "single_port";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_address_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_byte_enable_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_data_out_clear = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_data_out_clock = "none";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_first_address = 0;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_first_bit_number = 7;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_last_address = 8191;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_logical_ram_depth = 20000;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_logical_ram_width = 32;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_a_read_during_write_mode = "new_data_no_nbe_read";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_b_address_width = 13;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .port_b_data_width = 1;
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .ram_block_type = "M20K";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .mem_init3 = "FC02005F3F7FBFF77F9F49F000C04602381FF000300004CF00080040001000000000000007FC0200800000000000000000FFF8200800000000000000000E018000400000000000000000F000000000000000000000000F000000000000000000000000F800200800183FFFFFFFE0F00B70000080000000000000000080C000000000000000000000080E00C400000000000000000080E0000000000000000000000FFF0000000000000000000000F000000000000000000000000ED00000000000000000000000E180000000000000000000000C380000000000000000000000C380000000000000000000000C380000000000000000000000C3800000000000";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .mem_init2 = "00000000000C080000000000000000000000E3C0000000000000000000000C3C0000000000000000000000FFC0000002000000000000000FFC0000002000000000000000E7C0000002000000000001300F020000000000000000000000F800000000000000000000000FE00000000000060000000000FFFFC000000000007DFE00007FFFFFF8000000000000000C07FFFFFFFF8000C000000000007FFFFFFFFE2000000000000007FFFFFFFFF9838000000000007FFFFFFFFFEC3C000000000007FFFFFFFFFF21C000000000007FFFFFFFFFFD80000000000007FFFFFFFFFFE60000000000007FFFFFFFFFFF9000000000000FFFFFFFFFFFFC400000000000FF";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .mem_init1 = "FFFFFFFFFFF000000000000FFFFFFFFFFFFFF00000000000FFFFFFFFFFFFFFE0000000000FFFFFFFFFFFFFFFF800000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF";
+defparam \vga_module|v|videoGen|mem|altsyncram_component|auto_generated|ram_block1a7 .mem_init0 = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF";
 // synopsys translate_on
 
 // Location: IOIBUF_X2_Y0_N58

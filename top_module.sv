@@ -9,7 +9,7 @@ logic wren;
 
 logic[7:0] data, addr_wr;
 
-ram1 mem(address,clk, data, wren, q);
+ram2 mem(address,clk, data, wren, q);
 write_mem write (str, wren, addr_wr, data);
 vga_module vga_module(
         .clk(clock),
