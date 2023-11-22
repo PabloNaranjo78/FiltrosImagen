@@ -6,12 +6,13 @@ module dmem(
 
 	logic [31:0] RAM[63:0];
 	
-	
-	assign rd = RAM[a[31:2]]; // word aligned
+	initial begin
+		$readmemh("memfile.dat",RAM);
+		assign rd = RAM[a[31:2]]; // word aligned
+	end
 	
 	always_ff @(posedge clk)
 		if (we) begin 
-			$readmemh("memfile.dat",RAM);
 			RAM[a[31:2]] <= wd;
 		end
 		
