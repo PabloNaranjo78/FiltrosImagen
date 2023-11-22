@@ -1,12 +1,13 @@
-module fulladder_module (input a, input b, input cin, output sum, output cout);
-
-    logic p, g;
-
-    assign p = a ^ b;
-    assign g = a & b;
-
-    assign sum = p ^ cin;
-    assign cout = g | (p & cin);
+module fulladder_module (
+	
+	input logic A,
+    input logic B,
+    input logic Cin,
+    output logic Sum,
+    output logic Cout
+);
+    assign Sum = A ^ B ^ Cin;
+    assign Cout = (A & B) | (Cin & (A ^ B));
 
             
 endmodule

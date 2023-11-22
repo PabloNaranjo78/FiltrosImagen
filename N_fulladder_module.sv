@@ -1,24 +1,32 @@
-module N_fulladder_module #(parameter N=32) (
-    input [N-1:0] a,
-    input [N-1:0] b,
-    input cin,
-    output [N-1:0] sum,
-    output cout,
+module N_fulladder_module #(parameter n=32) (
+    input logic [n-1:0] A,
+    input logic [n-1:0] B,
+    output logic [n-1:0] Sum,
+    output logic Cout,
     output carry_flag,
     output overflow_flag,
     output zero_flag
 );
 
-wire [N:0] carries;
-  genvar i;
 
 
-generate 
-    for (i = 0; i < N; i = i + 1) begin: nadder
-        fulladder_module s1 (.a(a[i]), .b(b[i]), .cin(carries[i]), .sum(sum[i]), .cout(carries[i+1]));
-    end
-endgenerate
-//	 assign result[N] = carries[N];
+reg [n:0] carry_out_intermediate=0;
+    
+    // Instancias de sumadores de 1 bit
+    genvar i;
+    generate
+        for (i = 0; i < n; i = i + 1) begin: loop_01
+            fulladder_module sum(
+                .A(A[i]),
+                .B(B[i]),
+                .Cin(carry_out_intermediate[i]),
+					 .Sum(Sum[i]),
+                .Cout(carry_out_intermediate[i+1])
+            );
+        end
+    endgenerate
+	
+	assign Cout = carry_out_intermediate[n];
 
 
     // Flags

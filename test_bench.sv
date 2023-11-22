@@ -1,40 +1,53 @@
 module test_bench();
 
-// Parámetros del sumador
-    logic [4:0] a;
-    logic [4:0] b;
-    logic [4:0] result;
+    reg [3:0] A_input;
+    reg [3:0] B_input;
+    wire [3:0] Sum_output;
+    wire Cout_output;
 
-    // Instanciar el módulo bajo prueba (reemplaza "nsumador" con el nombre correcto de tu módulo)
-    nsumador modulo(.a(a), .b(b), .result(result));
+    // Instanciar el módulo SumaNBits
+    N_fulladder_module #(4) dut (
+        .A(A_input),
+        .B(B_input),
+        .Sum(Sum_output),
+        .Cout(Cout_output)
+    );
 
-    // Inicializar las señales de entrada antes del bloque initial
+    // Generar estímulos
     initial begin
-        a = 4'b0000; // Valores iniciales de a
-        b = 4'b0000; // Valores iniciales de b
+        $display("A\tB\tSum\tCout");
+        $monitor("%b\t%b\t%b\t%b", A_input, B_input, Sum_output, Cout_output);
+
+        // Prueba 1
+        A_input = 4'b0101;
+        B_input = 4'b1100;
+        #40;
+		  
+		  $display("A\tB\tSum\tCout");
+        $monitor("%b\t%b\t%b\t%b", A_input, B_input, Sum_output, Cout_output);
+		  
+        // Prueba 1
+        A_input = 4'b1111;
+        B_input = 4'b1111;
+        #40;
+		  
+		  $display("A\tB\tSum\tCout");
+        $monitor("%b\t%b\t%b\t%b", A_input, B_input, Sum_output, Cout_output);
+
+        // Prueba 1
+        A_input = 4'b1010;
+        B_input = 4'b1111;
+        #40;
+		  
+		  $display("A\tB\tSum\tCout");
+        $monitor("%b\t%b\t%b\t%b", A_input, B_input, Sum_output, Cout_output);
+
+        // Prueba 1
+        A_input = 4'b000;
+        B_input = 4'b000;
+        #40;
+		  
+		  
     end
-
-    // Bloque de prueba
-    initial begin
-        // Realiza operaciones de prueba aquí
-        
-        // Por ejemplo, puedes cambiar los valores de a y b aquí y verificar el resultado
-        a = 4'b0001; // Valores iniciales de a
-        b = 4'b0000;
-        
-        // Espera un tiempo antes de verificar el resultado
-        #10;
-
-        // Verificar el resultado
-        if (result == 4'b0010) begin
-            $display("Prueba pasada: resultado es correcto");
-        end else begin
-            $display("Prueba fallida: resultado incorrecto");
-        end
-
-        // Terminar la simulación
-   
-    end
-
 
 endmodule 
