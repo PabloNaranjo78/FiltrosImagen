@@ -10,7 +10,9 @@ module dmem(
 	assign rd = RAM[a[31:2]]; // word aligned
 	
 	always_ff @(posedge clk)
-		if (we) RAM[a[31:2]] <= wd;
-
+		if (we) begin 
+			$readmemh("memfile.dat",RAM);
+			RAM[a[31:2]] <= wd;
+		end
 		
 endmodule
