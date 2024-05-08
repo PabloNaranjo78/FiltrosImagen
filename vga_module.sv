@@ -76,7 +76,7 @@ module videoGen(
     assign y0 = (y < 100) ? y : 0;
 
     // Llamada la ram
-    ram2 mem (
+    ram3 mem (
         .address((y0*100 + x0)),
         .clock(clk),
         .data(32'h0),

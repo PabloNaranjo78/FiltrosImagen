@@ -6,7 +6,7 @@ module alu_module(
 );
 
     logic [31:0] and_result, or_result, sum_result, subs_result;
-    logic flag_carry_add, flag_ov_add, flag_zero_add, flag_neg_sub, flag_zero_sub, flag_ov_sub;
+    logic flag_carry_add, flag_ov_add, flag_zero_add, flag_neg_sub, flag_zero_sub, flag_ov_sub, flag_carry_sub;
 
     N_fulladder_module #(32) full_adder_inst(
         .A(SrcA),
@@ -21,7 +21,7 @@ module alu_module(
         .A(SrcA),
         .B(SrcB),
         .z(subs_result),
-        .Cout(flag_carry_add), // Reuse the carry flag from the adder for subtraction
+        .Cout(flag_carry_sub), // Reuse the carry flag from the adder for subtraction
         .negative_flag(flag_neg_sub),
         .zero_flag(flag_zero_sub),
         .overflow_flag(flag_ov_sub)
@@ -47,7 +47,7 @@ module alu_module(
             end
             2'b01: begin
                 ALUResult = subs_result;
-                ALUFlags = {flag_neg_sub, flag_zero_sub, flag_carry_add, flag_ov_sub}; 
+                ALUFlags = {flag_neg_sub, flag_zero_sub, flag_carry_sub, flag_ov_sub}; 
             end
             2'b10: begin
                 ALUResult = and_result;
